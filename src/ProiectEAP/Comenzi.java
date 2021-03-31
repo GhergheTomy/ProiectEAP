@@ -1,0 +1,31 @@
+package ProiectEAP;
+
+public class Comenzi {
+    private Useri useri;
+    private int nr_comanda;
+    private Meniu meniu;
+    private Soferi soferi;
+
+    public Comenzi(Useri useri, int nr_comanda, Meniu meniu, Soferi soferi) {
+        this.useri = useri;
+        this.nr_comanda = nr_comanda;
+        this.meniu = meniu;
+        this.soferi = soferi;
+    }
+
+    public Useri getUseri() {
+        return useri;
+    }
+
+    public int getNr_comanda() {
+        return nr_comanda;
+    }
+
+    public Meniu getMeniu() {
+        return meniu;
+    }
+
+    public Soferi getSoferi() {
+        return soferi;
+    }
+}
