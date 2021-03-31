@@ -10,9 +10,9 @@ public class Servicii {
         return comanda;
     }
 
-    public static void adaugaComenzi( Useri useri, int nr_comanda, Meniu meniu, Soferi soferi) {
+    public static void adaugaComenzi(Useri useri, int nr_comanda, Meniu meniu, Soferi soferi) {
 
-        comanda.add(new Comenzi( useri, nr_comanda, meniu, soferi));
+        comanda.add(new Comenzi(useri, nr_comanda, meniu, soferi));
     }
 
     //    Soferi
@@ -70,7 +70,7 @@ public class Servicii {
         return localuri;
     }
 
-    public static void adaugaMancare(final String nume, String locatie, String specific, float media) {
+    public static void adaugaLocaluri(final String nume, String locatie, String specific, float media) {
 
         localuri.add(new Localuri(nume, locatie, specific, media));
     }
@@ -85,5 +85,11 @@ public class Servicii {
     public static void adaugaMeniu(String nume_mancare, String descriere, boolean disponibilitate, int pret, boolean reduceri, Localuri localuri) {
 
         meniu.add(new Meniu(nume_mancare, descriere, disponibilitate, pret, reduceri, localuri));
+    }
+
+    public static Localuri getLcoalByName(String nume) {
+        for(Localuri l:localuri)
+            if(l.getNume().equals(nume)) return l;
+            return null;
     }
 }
