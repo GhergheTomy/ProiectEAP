@@ -1,0 +1,13 @@
+Clase:
+-Main
+-Servicii
+-Useri
+-Localuri
+-Meniu
+-Recenzie
+-Vaucere
+-Comenzi
+-Soferi
+
+Functionalitatea actuala a programului
+Adaugarea si afisarea datelor din anumite clase 
