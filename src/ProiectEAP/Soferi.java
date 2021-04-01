@@ -4,13 +4,13 @@ public class Soferi {
     private String nume;
     private boolean POS;
     private String vehicul;
-    private Localuri localuri;
+//    private Localuri localuri;
 
-    public Soferi(String nume, boolean POS, String vehicul, Localuri localuri) {
+    public Soferi(String nume, boolean POS, String vehicul) {
         this.nume = nume;
         this.POS = POS;
         this.vehicul = vehicul;
-        this.localuri = localuri;
+//        this.localuri = localuri;
     }
 
     public String getNume() {
@@ -25,9 +25,9 @@ public class Soferi {
         return vehicul;
     }
 
-    public Localuri getLocaluri() {
-        return localuri;
-    }
+//    public Localuri getLocaluri() {
+//        return localuri;
+//    }
 
     public void setPOS(boolean POS) {
         this.POS = POS;
@@ -37,7 +37,7 @@ public class Soferi {
         this.vehicul = vehicul;
     }
 
-    public void setLocaluri(Localuri localuri) {
-        this.localuri = localuri;
-    }
+//    public void setLocaluri(Localuri localuri) {
+//        this.localuri = localuri;
+//    }
 }

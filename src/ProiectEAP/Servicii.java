@@ -10,9 +10,9 @@ public class Servicii {
         return comanda;
     }
 
-    public static void adaugaComenzi(Useri useri, int nr_comanda, Meniu meniu, Soferi soferi) {
+    public static void adaugaComenzi( int nr_comanda) {
 
-        comanda.add(new Comenzi(useri, nr_comanda, meniu, soferi));
+        comanda.add(new Comenzi(nr_comanda));
     }
 
     //    Soferi
@@ -22,9 +22,9 @@ public class Servicii {
         return sofer;
     }
 
-    public static void adaugaSoferi(String nume, boolean POS, String vehicul, Localuri localuri) {
+    public static void adaugaSoferi(String nume, boolean POS, String vehicul) {
 
-        sofer.add(new Soferi(nume, POS, vehicul, localuri));
+        sofer.add(new Soferi(nume, POS, vehicul));
     }
 
     //    Recenzie
@@ -34,21 +34,21 @@ public class Servicii {
         return recenzie;
     }
 
-    public static void adaugaRecenzie(final int nr_rating, final int nota, final String comentariu, Localuri localuri, Useri useri) {
+    public static void adaugaRecenzie(final int nr_rating, final int nota, final String comentariu) {
 
-        recenzie.add(new Recenzie(nr_rating, nota, comentariu, localuri, useri));
+        recenzie.add(new Recenzie(nr_rating, nota, comentariu));
     }
 
-    //Vaucher
-    private static Vector<Vaucher> vaucher = new Vector<Vaucher>();
+    //Voucher
+    private static Vector<Voucher> voucher = new Vector<Voucher>();
 
-    public static Vector<Vaucher> getVaucher() {
-        return vaucher;
+    public static Vector<Voucher> getVoucher() {
+        return voucher;
     }
 
-    public static void adaugaVaucher(int cod, String descriere) {
+    public static void adaugaVoucher(int cod, String descriere) {
 
-        vaucher.add(new Vaucher(cod, descriere));
+        voucher.add(new Voucher(cod, descriere));
     }
 
     //Useri
@@ -82,9 +82,9 @@ public class Servicii {
         return meniu;
     }
 
-    public static void adaugaMeniu(String nume_mancare, String descriere, boolean disponibilitate, int pret, boolean reduceri, Localuri localuri) {
+    public static void adaugaMeniu(String nume_mancare, String descriere, boolean disponibilitate, int pret, boolean reduceri) {
 
-        meniu.add(new Meniu(nume_mancare, descriere, disponibilitate, pret, reduceri, localuri));
+        meniu.add(new Meniu(nume_mancare, descriere, disponibilitate, pret, reduceri));
     }
 
     public static Localuri getLcoalByName(String nume) {

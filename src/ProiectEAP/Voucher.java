@@ -1,10 +1,10 @@
 package ProiectEAP;
 
-public class Vaucher {
+public class Voucher {
     private int cod;
     private String descriere;
 
-    public Vaucher(int cod, String descriere) {
+    public Voucher(int cod, String descriere) {
         this.cod = cod;
         this.descriere = descriere;
     }
