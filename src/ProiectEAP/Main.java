@@ -125,23 +125,14 @@ public class Main {
                     String locatie = scanner.next();
                     System.out.println("Specificul localului :");
                     String specific = scanner.next();
-                    System.out.println("Raitingul localului :");
-                    float raiting = Float.parseFloat(scanner.next());
-                    Servicii.adaugaLocaluri(nume, locatie, specific, raiting);
-                    int ok;
+                    System.out.println("ratingul localului :");
+                    float rating = Float.parseFloat(scanner.next());
+                    Servicii.adaugaLocaluri(nume, locatie, specific, rating);
 
-//                    Interogare introducere date in meniul localului
-
-                    System.out.println("Doriti sa introduceti si meniul localului " + nume + " :");
-                    System.out.println("In caz afirmativ tastati da in caz contrar nu :");
-
-
-//                    Interogare bucla introducere noi localuri
 
                     System.out.println("Doriti sa mai adugati vreun local ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
-                    ok = Integer.parseInt(scanner.next());
 
 //                    Iesirea din bucla pentru a nu mai introduce noi utilizatori
 
@@ -162,7 +153,7 @@ public class Main {
                     System.out.println("Nume local : " + iteraror.getNume());
                     System.out.println("Locatie local : " + iteraror.getLocatie());
                     System.out.println("Specificul localului : " + iteraror.getSpecific());
-                    System.out.println("Raitingul utilizator : " + iteraror.getMedia());
+                    System.out.println("ratingul utilizator : " + iteraror.getMedia());
 
                 });
             } else if (decizie == 5)
@@ -214,16 +205,18 @@ public class Main {
                     System.out.println("Doriti sa mai adaugati vreun preparat in meniu ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
+
+                    //Iesirea din bucla pentru a nu mai introduce noi preparate
+
                     var = scanner.next();
                     while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
-
                     }
                     if (var.toUpperCase().equals("NU") == true)
-                        procedura = -1;
+                        procedura = 3;
                 }
-                while (decizie == 5);
+                while (procedura == 1);
             else if (decizie == 6) {
                 Servicii.getMeniu().forEach((iteraror) -> {
                     System.out.println("Nume preparat : " + iteraror.getNume_mancare());
@@ -242,33 +235,34 @@ public class Main {
 
                 });
             } else if (decizie == 7) {
-                procedura = 1;
+                do {
+                    procedura = 1;
 
 //                Colectare de date pentru crearea unui nou voucher
 
-                System.out.println("Cod voucher : ");
-                int cod = Integer.parseInt(scanner.next());
-                System.out.println("Descriere voucher :");
-                String descriere = scanner.next();
+                    System.out.println("Cod voucher : ");
+                    int cod = Integer.parseInt(scanner.next());
+                    System.out.println("Descriere voucher :");
+                    String descriere = scanner.next();
 
 //                Crearea obiectului
 
-                Servicii.adaugaVoucher(cod, descriere);
+                    Servicii.adaugaVoucher(cod, descriere);
 
 //                Iesirea din bucla in cazul in care nu se mai doreste introducerea de noi voucere
 
-                System.out.println("Doriti sa mai creati vreun voucher ? ");
-                System.out.println("Pentru da tastati ->DA ");
-                System.out.println("Pentru nu tastati ->NU ");
-                String var = scanner.next();
-                while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
-                    System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
-                    var = scanner.next();
+                    System.out.println("Doriti sa mai creati vreun voucher ? ");
+                    System.out.println("Pentru da tastati ->DA ");
+                    System.out.println("Pentru nu tastati ->NU ");
+                    String var = scanner.next();
+                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                        System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
+                        var = scanner.next();
 
-                }
-                if (var.toUpperCase().equals("NU") == true)
-                    procedura = 3;
-
+                    }
+                    if (var.toUpperCase().equals("NU") == true)
+                        procedura = 3;
+                } while (procedura == 1);
             } else if (decizie == 8) {
 
 //                Afisarea tuturor voucerelor
@@ -278,47 +272,51 @@ public class Main {
                     System.out.println("Descriere voucher : " + iteraror.getDescriere());
                 });
             } else if (decizie == 9) {
-                procedura = 1;
+                do {
+                    procedura = 1;
 
 //                Colectarea datelorpentru crearea unui nou sofer
 
-                System.out.println("Nume voucher :");
-                String denumire = scanner.next();
-                System.out.println("Aparat POS :");
-                System.out.println("Pentru da tastati ->DA ");
-                System.out.println("Pentru nu tastati ->NU ");
-                String var = scanner.next();
-                boolean Pos = false;
-                while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
-                    System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
-                    var = scanner.next();
-                }
-                if (var.toUpperCase().equals("DA") == true)
-                    Pos = true;
-                else if (var.toUpperCase().equals("NU") == true)
-                    Pos = false;
+                    System.out.println("Nume sofer :");
+                    String denumire = scanner.next();
+                    System.out.println("Aparat POS :");
+                    System.out.println("Pentru da tastati ->DA ");
+                    System.out.println("Pentru nu tastati ->NU ");
+                    String var = scanner.next();
+                    boolean Pos = false;
+                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                        System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
+                        var = scanner.next();
+                    }
+                    if (var.toUpperCase().equals("DA") == true)
+                        Pos = true;
+                    else if (var.toUpperCase().equals("NU") == true)
+                        Pos = false;
 
-                System.out.println("Vehicul :");
-                String vehicul = scanner.next();
+                    System.out.println("Vehicul :");
+                    String vehicul = scanner.next();
 
 //            Creare obiect sofer
 
-                Servicii.adaugaSoferi(denumire, Pos, vehicul);
+                    Servicii.adaugaSoferi(denumire, Pos, vehicul);
 
 //                Parasire bucla adaugare soferi
 
-                System.out.println("Doriti sa mai creati vreun sofer ? ");
-                System.out.println("Pentru da tastati ->DA ");
-                System.out.println("Pentru nu tastati ->NU ");
-                while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
-                    System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
-                    var = scanner.next();
+                    System.out.println("Doriti sa mai creati vreun sofer ? ");
+                    System.out.println("Pentru da tastati ->DA ");
+                    System.out.println("Pentru nu tastati ->NU ");
+                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                        System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
+                        var = scanner.next();
 
-                }
-                if (var.toUpperCase().equals("NU") == true)
-                    procedura = -1;
-
+                    }
+                    if (var.toUpperCase().equals("NU") == true)
+                        procedura = -1;
+                } while (procedura == 1);
             } else if (decizie == 10) {
+
+//                Afisarea tuturor soferilor
+
                 Servicii.getSoferi().forEach((iteraror) -> {
                     System.out.println("Nume preparat : " + iteraror.getNume());
                     if (iteraror.isPOS()) {
@@ -329,66 +327,79 @@ public class Main {
                     System.out.println("Pret preparat : " + iteraror.getVehicul());
                 });
             } else if (decizie == 11) {
-                procedura = 1;
+                do {
+                    procedura = 1;
 
 //                Colectare date cu scopul folosirii in crearea comenzii
 
-                System.out.println("Numarul comenzii ? ");
-                int nr_comanda = Integer.parseInt(scanner.next());
+                    System.out.println("Numarul comenzii ? ");
+                    int nr_comanda = Integer.parseInt(scanner.next());
 
 //                Crearea obiectului comanda
 
-                Servicii.adaugaComenzi(nr_comanda);
+                    Servicii.adaugaComenzi(nr_comanda);
 
 //                Iesirea din bucla creata in cazul in care utilizatorul nu mai doreste sa adauge si alte comenzi
 
-                System.out.println("Doriti sa mai creati vreo comanda ? ");
-                System.out.println("Pentru da tastati ->DA ");
-                System.out.println("Pentru nu tastati ->NU ");
-                String var = scanner.next();
-                while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
-                    System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
-                    var = scanner.next();
+                    System.out.println("Doriti sa mai creati vreo comanda ? ");
+                    System.out.println("Pentru da tastati ->DA ");
+                    System.out.println("Pentru nu tastati ->NU ");
+                    String var = scanner.next();
+                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                        System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
+                        var = scanner.next();
 
-                }
-                if (var.toUpperCase().equals("NU") == true)
-                    procedura = 3;
+                    }
+                    if (var.toUpperCase().equals("NU") == true)
+                        procedura = 3;
+                } while (procedura == 1);
             } else if (decizie == 12) {
 
 //                Afisarea tuturor comenzilor
 
                 Servicii.getComenzi().forEach((iteraror) -> {
-                    System.out.println("Nume preparat : " + iteraror.getNr_comanda());
+                    System.out.println("Numar comanda : " + iteraror.getNr_comanda());
                 });
             } else if (decizie == 13) {
-                procedura = 1;
+                do {
+                    procedura = 1;
 
 //                Colectarea de date necesare pentru crearea unei recenzii
 
-                System.out.println("Numar raiting ? ");
-                int nr_rat = Integer.parseInt(scanner.next());
-                System.out.println("Nota ? ");
-                int nota = Integer.parseInt(scanner.next());
-                System.out.println("Comentariu :");
-                String com = scanner.next();
+                    System.out.println("Numar rating ? ");
+                    int nr_rat = Integer.parseInt(scanner.next());
+                    System.out.println("Nota ? ");
+                    int nota = Integer.parseInt(scanner.next());
+                    System.out.println("Comentariu :");
+                    String com = scanner.next();
 
 //                Creare obiect comentariu
 
-                Servicii.adaugaRecenzie(nr_rat,nota,com);
+                    Servicii.adaugaRecenzie(nr_rat, nota, com);
 
 //             Paarasirea buclei in cazul in care utilizatorul nu mai doreste adaugarea altei recenzii
-                System.out.println("Doriti sa mai creati vreo recenzie ? ");
-                System.out.println("Pentru da tastati ->DA ");
-                System.out.println("Pentru nu tastati ->NU ");
-                String var = scanner.next();
-                while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
-                    System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
-                    var = scanner.next();
+                    System.out.println("Doriti sa mai creati vreo recenzie ? ");
+                    System.out.println("Pentru da tastati ->DA ");
+                    System.out.println("Pentru nu tastati ->NU ");
+                    String var = scanner.next();
+                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                        System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
+                        var = scanner.next();
 
-                }
-                if (var.toUpperCase().equals("NU") == true)
-                    procedura = 3;
+                    }
+                    if (var.toUpperCase().equals("NU") == true)
+                        procedura = 3;
+                } while (procedura == 1);
+            } else if (decizie == 14) {
 
+//                Afisarea tuturor recenzii
+
+                Servicii.getRecenzie().forEach((iteraror) -> {
+                    System.out.println("Numarul ratingului : " + iteraror.getNr_rating());
+                    System.out.println("Nota : " + iteraror.getNota());
+                    System.out.println("Comentariu : " + iteraror.getComentariu());
+
+                });
             }
 
         }
