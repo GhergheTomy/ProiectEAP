@@ -1,9 +1,38 @@
 package ProiectEAP;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
+        File conturi=new File("src/ProiectEAP/Conturi.txt");
+        Scanner citire_conturi;
+            try {
+                citire_conturi = new Scanner(conturi);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                citire_conturi=null;
+            }
+        citire_conturi.useDelimiter("[,\\n]");
+        String[] date_user=new String[6];
+        int i=0;
+        while(citire_conturi.hasNext())
+        {
+            date_user[i]=citire_conturi.next();
+            i++;
+        }
+        Useri Alex=new Useri(date_user[0],date_user[1],date_user[2],date_user[3],date_user[4],date_user[5]);
+        System.out.println(Alex.getEmail());
+
+
+
+
+
+
         Scanner scanner = new Scanner(System.in);
         int decizie;
         do {
