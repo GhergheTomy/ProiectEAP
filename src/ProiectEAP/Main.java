@@ -1,15 +1,24 @@
 package ProiectEAP;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        //Creare scaner
+
         File conturi=new File("src/ProiectEAP/Conturi.txt");
         Scanner citire_conturi;
+
+        // try and catch pentru evitarea posibilitatii neexistentei fisierului txt
+
             try {
                 citire_conturi = new Scanner(conturi);
 
@@ -17,20 +26,37 @@ public class Main {
                 e.printStackTrace();
                 citire_conturi=null;
             }
+
         citire_conturi.useDelimiter("[,\\n]");
-        String[] date_user=new String[6];
-        int i=0;
+        ArrayList<Useri>lista_useri=new ArrayList<>();
+
         while(citire_conturi.hasNext())
         {
+            String[] date_user=new String[6];
+            for(int i=0;i<6;i++)
             date_user[i]=citire_conturi.next();
-            i++;
+            lista_useri.add(new Useri(date_user[0],date_user[1],date_user[2],date_user[3],date_user[4],date_user[5]));
         }
-        Useri Alex=new Useri(date_user[0],date_user[1],date_user[2],date_user[3],date_user[4],date_user[5]);
-        System.out.println(Alex.getEmail());
 
+        citire_conturi.close();
 
+        for(Useri j:lista_useri)
+        {
+            System.out.println(j.getEmail());
+        }
 
-
+        try {
+            FileWriter salvare_conturi=new FileWriter(conturi,true);
+            salvare_conturi.append("\n");
+            for(Useri j:lista_useri)
+            {
+                System.out.println(j.toString());
+                salvare_conturi.append(j.toString());
+            }
+            salvare_conturi.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         Scanner scanner = new Scanner(System.in);

@@ -41,5 +41,9 @@ public class Useri {
         return nr_card;
     }
 
+    @Override
+    public String toString() {
+        return nume+","+prenume+","+email+","+parola+","+card+","+nr_card+",";
+    }
 }
 
