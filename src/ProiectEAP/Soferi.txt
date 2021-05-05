@@ -1,0 +1,7 @@
+Adrian,false,Logan,
+Gege,true,Duster,
+Gege,true,Duster,
+Dan,false,logan,
+Adita,false,Piagio,
+Bobel,true,Mecedes,
+Bobel,true,Mecedes,Ion,false,Logan,

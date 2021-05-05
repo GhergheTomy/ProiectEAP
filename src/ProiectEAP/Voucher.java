@@ -16,4 +16,9 @@ public class Voucher {
     public String getDescriere() {
         return descriere;
     }
+
+    @Override
+    public String toString() {
+        return  cod +","+ descriere + ",";
+    }
 }

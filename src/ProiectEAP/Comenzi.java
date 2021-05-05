@@ -28,4 +28,9 @@ public class Comenzi {
 //    public Soferi getSoferi() {
 //        return soferi;
 //    }
+
+    @Override
+    public String toString() {
+        return  nr_comanda +",";
+    }
 }

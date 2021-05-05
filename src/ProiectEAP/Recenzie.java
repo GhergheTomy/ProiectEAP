@@ -35,4 +35,9 @@ public class Recenzie {
 //    public Useri getUseri() {
 //        return useri;
 //    }
+
+    @Override
+    public String toString() {
+        return nr_rating +"," + nota +"," + comentariu + ",";
+    }
 }

@@ -1,6 +1,5 @@
 package ProiectEAP;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,6 +8,69 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static ArrayList<Object> citire(File fisier,int caz){
+        try {
+            Scanner parametrii= new Scanner(fisier);
+            ArrayList<Object> lista=new ArrayList<>();
+            parametrii.useDelimiter("[,\\n]+");
+            while(parametrii.hasNext())
+            {
+                if(caz==2)
+                    {
+                     String[] date_user=new String[6];
+                    for(int i=0;i<6;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Useri(date_user[0],date_user[1],date_user[2],date_user[3],date_user[4],date_user[5]));
+                    }
+                else if(caz == 4)
+                {
+                    String[] date_user=new String[4];
+                    for(int i=0;i<4;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Localuri(date_user[0],date_user[1],date_user[2],Float.parseFloat(date_user[3])));
+                }
+                else if(caz == 6)
+                {
+                    String[] date_user=new String[5];
+                    for(int i=0;i<5;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Meniu(date_user[0],date_user[1],Boolean.parseBoolean(date_user[2]),Integer.parseInt(date_user[3]),Boolean.parseBoolean(date_user[4])));
+                }
+                else if(caz == 8)
+                {
+                    String[] date_user=new String[2];
+                    for(int i=0;i<2;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Voucher(Integer.parseInt(date_user[0]),date_user[1]));
+                }
+                else if(caz == 10)
+                {
+                    String[] date_user=new String[3];
+                    for(int i=0;i<3;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Soferi(date_user[0],Boolean.parseBoolean(date_user[1]),date_user[2]));
+                }
+                else if(caz == 12)
+                {
+                    String[] date_user=new String[1];
+                    for(int i=0;i<1;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Comenzi(Integer.parseInt(date_user[0])));
+                }
+                else if(caz == 14)
+                {
+                    String[] date_user=new String[3];
+                    for(int i=0;i<3;i++)
+                        date_user[i]=parametrii.next();
+                    lista.add(new Recenzie(Integer.parseInt(date_user[0]),Integer.parseInt(date_user[1]),date_user[2]));
+                }
+            }
+            return lista;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+}
 
     public static void main(String[] args) {
 
@@ -16,48 +78,71 @@ public class Main {
 
         File conturi=new File("src/ProiectEAP/Conturi.txt");
         Scanner citire_conturi;
+        File localuri=new File("src/ProiectEAP/Localuri.txt");
+        Scanner citire_localuri;
+        File meniuri=new File("src/ProiectEAP/Meniuri.txt");
+        Scanner citire_meniuri;
+        File vouchere=new File("src/ProiectEAP/Vouchere.txt");
+        Scanner citire_vouchere;
+        File soferi=new File("src/ProiectEAP/Soferi.txt");
+        Scanner citire_soferi;
+        File comenzi=new File("src/ProiectEAP/Comenzi.txt");
+        Scanner citire_comenzi;
+        File recenzii=new File("src/ProiectEAP/Recenzii.txt");
+        Scanner citire_recenzii;
 
         // try and catch pentru evitarea posibilitatii neexistentei fisierului txt
 
-            try {
-                citire_conturi = new Scanner(conturi);
-
-            } catch (FileNotFoundException e) {
+        try {
+            citire_conturi = new Scanner(conturi);
+        } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 citire_conturi=null;
-            }
-
-        citire_conturi.useDelimiter("[,\\n]");
-        ArrayList<Useri>lista_useri=new ArrayList<>();
-
-        while(citire_conturi.hasNext())
-        {
-            String[] date_user=new String[6];
-            for(int i=0;i<6;i++)
-            date_user[i]=citire_conturi.next();
-            lista_useri.add(new Useri(date_user[0],date_user[1],date_user[2],date_user[3],date_user[4],date_user[5]));
         }
-
-        citire_conturi.close();
-
-        for(Useri j:lista_useri)
-        {
-            System.out.println(j.getEmail());
-        }
-
         try {
-            FileWriter salvare_conturi=new FileWriter(conturi,true);
-            salvare_conturi.append("\n");
-            for(Useri j:lista_useri)
-            {
-                System.out.println(j.toString());
-                salvare_conturi.append(j.toString());
-            }
-            salvare_conturi.close();
-        } catch (IOException e) {
+            citire_localuri = new Scanner(localuri);
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
+            citire_localuri = null;
+        }
+        try {
+            citire_meniuri = new Scanner(meniuri);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            citire_meniuri = null;
+        }
+        try {
+            citire_vouchere = new Scanner(vouchere);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            citire_vouchere = null;
+        }
+        try {
+            citire_soferi = new Scanner(soferi);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            citire_soferi = null;
+        }
+        try {
+            citire_comenzi = new Scanner(comenzi);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            citire_comenzi = null;
+        }
+        try {
+            citire_recenzii = new Scanner(recenzii);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            citire_recenzii = null;
         }
 
+        citire_conturi.useDelimiter("[,\\n]+");
+        citire_localuri.useDelimiter("[,\\n]+");
+        citire_meniuri.useDelimiter("[,\\n]+");
+        citire_vouchere.useDelimiter("[,\\n]+");
+        citire_soferi.useDelimiter("[,\\n]+");
+        citire_comenzi.useDelimiter("[,\\n]+");
+        citire_recenzii.useDelimiter("[,\\n]+");
 
         Scanner scanner = new Scanner(System.in);
         int decizie;
@@ -121,16 +206,16 @@ public class Main {
 
 //                    Verificarea acordului utilizatorului de a introduce si cardul sau introducerea automata in camp cu valorea "Fara card"
 
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
                     }
-                    if (var.toUpperCase().equals("DA") == true) {
+                    if (var.toUpperCase().equals("DA")) {
                         System.out.println("Tip card :");
                         card = scanner.next();
                         System.out.println("Numar card :");
                         nr_card = scanner.next();
-                    } else if (var.toUpperCase().equals("NU") == true) {
+                    } else if (var.toUpperCase().equals("NU")) {
                         card = "Fara card";
                         nr_card = "Fara card";
 
@@ -140,18 +225,33 @@ public class Main {
 
                     Servicii.adaugaUseri(nume, prenume, email, parola, card, nr_card);
 
+                    try {
+                        FileWriter salvare_conturi=new FileWriter(conturi,true);
+                        salvare_conturi.append("\n");
+                            Servicii.getUseri().forEach(e-> {
+                                try {
+                                    salvare_conturi.append(e.toString());
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                }
+                            });
+                        salvare_conturi.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //                    Verificarea acordului utilizatorului de a introduce inca un utilizator
 
                     System.out.println("Doriti sa mai creati vreun cont ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
                     var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
 
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = 3;
 
 
@@ -160,14 +260,21 @@ public class Main {
 
 //                Afisarea tuturor userilor;
 
-                Servicii.getUseri().forEach((iteraror) -> {
-                    System.out.println("Nume utilizator : " + iteraror.getNume());
-                    System.out.println("Prenume utilizator : " + iteraror.getPrenume());
-                    System.out.println("Email utilizator : " + iteraror.getEmail());
-                    System.out.println("Parola utilizator : " + iteraror.getParola());
-                    System.out.println("Card utilizator : " + iteraror.getCard());
-                    System.out.println("Numar card utilizator : " + iteraror.getNr_card());
-                });
+                ArrayList<Useri> useri=new ArrayList<>();
+                for(Object i:citire(conturi,decizie))
+                    useri.add((Useri) i);
+                try {
+                    FileWriter salvare_conturi=new FileWriter(conturi,true);
+                    salvare_conturi.append("\n");
+                    for(Useri j:useri)
+                    {
+                        System.out.println(j.toString());
+                    }
+                    System.out.println("");
+                    salvare_conturi.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (decizie == 3) {
                 do {
 
@@ -184,6 +291,20 @@ public class Main {
                     float rating = Float.parseFloat(scanner.next());
                     Servicii.adaugaLocaluri(nume, locatie, specific, rating);
 
+                    try {
+                        FileWriter salvare_localuri=new FileWriter(localuri,true);
+                        salvare_localuri.append("\n");
+                        Servicii.getLocaluri().forEach(e-> {
+                            try {
+                                salvare_localuri.append(e.toString());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        });
+                        salvare_localuri.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                     System.out.println("Doriti sa mai adugati vreun local ? ");
                     System.out.println("Pentru da tastati ->DA ");
@@ -192,25 +313,36 @@ public class Main {
 //                    Iesirea din bucla pentru a nu mai introduce noi utilizatori
 
                     String var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
 
+
+
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = -1;
                 } while (procedura == 1);
             } else if (decizie == 4) {
-                Servicii.getLocaluri().forEach((iteraror) -> {
 
-//                    Afisarea tuturor localurilor
+//                Afisarea tuturor localurilor;
 
-                    System.out.println("Nume local : " + iteraror.getNume());
-                    System.out.println("Locatie local : " + iteraror.getLocatie());
-                    System.out.println("Specificul localului : " + iteraror.getSpecific());
-                    System.out.println("ratingul utilizator : " + iteraror.getMedia());
 
-                });
+                ArrayList<Localuri> local=new ArrayList<>();
+                for(Object i:citire(localuri,decizie))
+                    local.add((Localuri) i);
+                try {
+                    FileWriter salvare_localuri=new FileWriter(localuri,true);
+                    salvare_localuri.append("\n");
+                    for(Localuri j:local)
+                    {
+                        System.out.println(j.toString());
+                    }
+                    System.out.println("");
+                    salvare_localuri.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (decizie == 5)
                 do {
 
@@ -226,15 +358,12 @@ public class Main {
                     System.out.println("Pentru nu tastati ->NU ");
                     String var = scanner.next();
                     boolean disponibilitate = false;
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
                     }
-                    if (var.toUpperCase().equals("DA") == true)
+                    if (var.toUpperCase().equals("DA"))
                         disponibilitate = true;
-                    else if (var.toUpperCase().equals("NU") == true)
-                        disponibilitate = false;
-
 
                     System.out.println("Pret preparat :");
                     int pret = Integer.parseInt(scanner.next());
@@ -243,18 +372,31 @@ public class Main {
                     System.out.println("Pentru nu tastati ->NU ");
                     boolean reduceri = false;
                     var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
                     }
-                    if (var.toUpperCase().equals("DA") == true)
+                    if (var.toUpperCase().equals("DA"))
                         reduceri = true;
-                    else if (var.toUpperCase().equals("NU") == true)
-                        reduceri = false;
 
 //                    Crearea unui obiect meniu
 
                     Servicii.adaugaMeniu(nume, descriere, disponibilitate, pret, reduceri);
+
+                    try {
+                        FileWriter salvare_meniuri=new FileWriter(meniuri,true);
+                        salvare_meniuri.append("\n");
+                        Servicii.getMeniu().forEach(e-> {
+                            try {
+                                salvare_meniuri.append(e.toString());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        });
+                        salvare_meniuri.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
 //                    Iesirea din bucla pentru a nu mai introduce noi utilizatori
                     System.out.println("Doriti sa mai adaugati vreun preparat in meniu ? ");
@@ -264,31 +406,34 @@ public class Main {
                     //Iesirea din bucla pentru a nu mai introduce noi preparate
 
                     var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = 3;
                 }
                 while (procedura == 1);
-            else if (decizie == 6) {
-                Servicii.getMeniu().forEach((iteraror) -> {
-                    System.out.println("Nume preparat : " + iteraror.getNume_mancare());
-                    System.out.println("Descriere preparat : " + iteraror.getDescriere());
-                    if (iteraror.isDisponibilitate()) {
-                        System.out.println("Preparatul este disponibil !");
-                    } else {
-                        System.out.println("Preparat indisponibil pentru moment ! ");
-                    }
-                    System.out.println("Pret preparat : " + iteraror.getPret());
-                    if (iteraror.isReduceri()) {
-                        System.out.println("Preparatul este redus !");
-                    } else {
-                        System.out.println("Preparat are pret intreg !");
-                    }
+            else if (decizie == 6){
 
-                });
+//                Afisarea tuturor meniurilor;
+
+                ArrayList<Meniu> meniu=new ArrayList<>();
+                for(Object i:citire(meniuri,decizie))
+                    meniu.add((Meniu) i);
+                try {
+                    FileWriter salvare_meniuri=new FileWriter(meniuri,true);
+                    salvare_meniuri.append("\n");
+                    System.out.println("Nume Preparat ,Descriere,Disponibilitate,Pret,Reduceri");
+                    for(Meniu j:meniu)
+                    {
+                        System.out.println(j.toString());
+                    }
+                    System.out.println("");
+                    salvare_meniuri.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (decizie == 7) {
                 do {
                     procedura = 1;
@@ -304,29 +449,56 @@ public class Main {
 
                     Servicii.adaugaVoucher(cod, descriere);
 
+                    try {
+                        FileWriter salvare_vouchere=new FileWriter(vouchere,true);
+                        salvare_vouchere.append("\n");
+                        Servicii.getVoucher().forEach(e-> {
+                            try {
+                                salvare_vouchere.append(e.toString());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        });
+                        salvare_vouchere.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //                Iesirea din bucla in cazul in care nu se mai doreste introducerea de noi voucere
 
                     System.out.println("Doriti sa mai creati vreun voucher ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
                     String var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
 
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = 3;
                 } while (procedura == 1);
-            } else if (decizie == 8) {
+            } else if (decizie == 8){
 
-//                Afisarea tuturor voucerelor
+//                Afisarea tuturor voucherelor;
 
-                Servicii.getVoucher().forEach((iteraror) -> {
-                    System.out.println("Cod voucher : " + iteraror.getCod());
-                    System.out.println("Descriere voucher : " + iteraror.getDescriere());
-                });
-            } else if (decizie == 9) {
+                ArrayList<Voucher> voucher=new ArrayList<>();
+                for(Object i:citire(vouchere,decizie))
+                    voucher.add((Voucher) i);
+                try {
+                    FileWriter salvare_vouchere=new FileWriter(vouchere,true);
+                    salvare_vouchere.append("\n");
+                    System.out.println("Cod , Descriere");
+                    for(Voucher j:voucher)
+                    {
+                        System.out.println(j.toString());
+                    }
+                    System.out.println("");
+                    salvare_vouchere.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else if (decizie == 9) {
                 do {
                     procedura = 1;
 
@@ -339,14 +511,12 @@ public class Main {
                     System.out.println("Pentru nu tastati ->NU ");
                     String var = scanner.next();
                     boolean Pos = false;
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
                     }
-                    if (var.toUpperCase().equals("DA") == true)
+                    if (var.toUpperCase().equals("DA"))
                         Pos = true;
-                    else if (var.toUpperCase().equals("NU") == true)
-                        Pos = false;
 
                     System.out.println("Vehicul :");
                     String vehicul = scanner.next();
@@ -355,32 +525,55 @@ public class Main {
 
                     Servicii.adaugaSoferi(denumire, Pos, vehicul);
 
+                    try {
+                        FileWriter salvare_soferi=new FileWriter(soferi,true);
+                        salvare_soferi.append("\n");
+                        Servicii.getSoferi().forEach(e-> {
+                            try {
+                                salvare_soferi.append(e.toString());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        });
+                        salvare_soferi.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //                Parasire bucla adaugare soferi
 
                     System.out.println("Doriti sa mai creati vreun sofer ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    var = scanner.next();
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
 
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = -1;
                 } while (procedura == 1);
             } else if (decizie == 10) {
 
-//                Afisarea tuturor soferilor
+//                Afisarea tuturor soferilor;
 
-                Servicii.getSoferi().forEach((iteraror) -> {
-                    System.out.println("Nume preparat : " + iteraror.getNume());
-                    if (iteraror.isPOS()) {
-                        System.out.println("Soferul are POS !");
-                    } else {
-                        System.out.println("Soferul nu are POS !");
+                ArrayList<Soferi> sofer=new ArrayList<>();
+                for(Object i:citire(soferi,decizie))
+                    sofer.add((Soferi) i);
+                try {
+                    FileWriter salvare_soferi=new FileWriter(soferi,true);
+                    salvare_soferi.append("\n");
+                    System.out.println("Nume, Pos, Vehicul");
+                    for(Soferi j:sofer)
+                    {
+                        System.out.println(j.toString());
                     }
-                    System.out.println("Pret preparat : " + iteraror.getVehicul());
-                });
+                    System.out.println("");
+                    salvare_soferi.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (decizie == 11) {
                 do {
                     procedura = 1;
@@ -394,27 +587,55 @@ public class Main {
 
                     Servicii.adaugaComenzi(nr_comanda);
 
+                    try {
+                        FileWriter salvare_comenzi=new FileWriter(comenzi,true);
+                        salvare_comenzi.append("\n");
+                        Servicii.getComenzi().forEach(e-> {
+                            try {
+                                salvare_comenzi.append(e.toString());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        });
+                        salvare_comenzi.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //                Iesirea din bucla creata in cazul in care utilizatorul nu mai doreste sa adauge si alte comenzi
 
                     System.out.println("Doriti sa mai creati vreo comanda ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
                     String var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
 
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = 3;
                 } while (procedura == 1);
             } else if (decizie == 12) {
 
-//                Afisarea tuturor comenzilor
+//                Afisarea tuturor comenzilor;
 
-                Servicii.getComenzi().forEach((iteraror) -> {
-                    System.out.println("Numar comanda : " + iteraror.getNr_comanda());
-                });
+                ArrayList<Comenzi> comanda=new ArrayList<>();
+                for(Object i:citire(comenzi,decizie))
+                    comanda.add((Comenzi) i);
+                try {
+                    FileWriter salvare_comenzi=new FileWriter(comenzi,true);
+                    salvare_comenzi.append("\n");
+                    System.out.println("Numar comanda");
+                    for(Comenzi j:comanda)
+                    {
+                        System.out.println(j.toString());
+                    }
+                    System.out.println("");
+                    salvare_comenzi.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (decizie == 13) {
                 do {
                     procedura = 1;
@@ -432,29 +653,54 @@ public class Main {
 
                     Servicii.adaugaRecenzie(nr_rat, nota, com);
 
+                    try {
+                        FileWriter salvare_recenzii=new FileWriter(recenzii,true);
+                        salvare_recenzii.append("\n");
+                        Servicii.getRecenzie().forEach(e-> {
+                            try {
+                                salvare_recenzii.append(e.toString());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        });
+                        salvare_recenzii.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //             Paarasirea buclei in cazul in care utilizatorul nu mai doreste adaugarea altei recenzii
                     System.out.println("Doriti sa mai creati vreo recenzie ? ");
                     System.out.println("Pentru da tastati ->DA ");
                     System.out.println("Pentru nu tastati ->NU ");
                     String var = scanner.next();
-                    while (var.toUpperCase().equals("DA") == false && var.toUpperCase().equals("NU") == false) {
+                    while (!var.toUpperCase().equals("DA") && !var.toUpperCase().equals("NU")) {
                         System.out.println("Valoarea introdusa este gresita! Introduceti valoarea corecta.");
                         var = scanner.next();
 
                     }
-                    if (var.toUpperCase().equals("NU") == true)
+                    if (var.toUpperCase().equals("NU"))
                         procedura = 3;
                 } while (procedura == 1);
             } else if (decizie == 14) {
 
-//                Afisarea tuturor recenzii
+//                Afisarea tuturor comenzilor;
 
-                Servicii.getRecenzie().forEach((iteraror) -> {
-                    System.out.println("Numarul ratingului : " + iteraror.getNr_rating());
-                    System.out.println("Nota : " + iteraror.getNota());
-                    System.out.println("Comentariu : " + iteraror.getComentariu());
-
-                });
+                ArrayList<Recenzie> recenzie=new ArrayList<>();
+                for(Object i:citire(recenzii,decizie))
+                    recenzie.add((Recenzie) i);
+                try {
+                    FileWriter salvare_recenzii=new FileWriter(recenzii,true);
+                    salvare_recenzii.append("\n");
+                    System.out.println("Numar raiting, Nota, Comentariu");
+                    for(Recenzie j:recenzie)
+                    {
+                        System.out.println(j.toString());
+                    }
+                    System.out.println("");
+                    salvare_recenzii.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
         }

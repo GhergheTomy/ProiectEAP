@@ -32,4 +32,9 @@ public class Localuri {
     public void setMedia(float media) {
         this.media = media;
     }
+
+    @Override
+    public String toString() {
+        return nume + "," + locatie + "," + specific + "," + media +",";
+    }
 }

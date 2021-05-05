@@ -56,5 +56,10 @@ public class Meniu {
     public void setReduceri(boolean reduceri) {
         this.reduceri = reduceri;
     }
+
+    @Override
+    public String toString() {
+        return nume_mancare+ "," + descriere + ","+ disponibilitate + ","+ pret + ","+ reduceri+"," ;
+    }
 }
 

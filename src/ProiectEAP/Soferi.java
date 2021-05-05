@@ -40,4 +40,9 @@ public class Soferi {
 //    public void setLocaluri(Localuri localuri) {
 //        this.localuri = localuri;
 //    }
+
+    @Override
+    public String toString() {
+        return nume +"," + POS + "," + vehicul + ",";
+    }
 }
