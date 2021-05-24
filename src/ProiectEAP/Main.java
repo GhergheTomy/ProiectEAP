@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -71,6 +73,70 @@ public class Main {
         }
         return null;
 }
+
+    public static void track(int caz) {
+
+        // Creare fisier
+        try {
+            FileWriter track = new FileWriter("src/ProiectEAP/Track.txt",true);
+            //Creare cazuri
+            switch(caz){
+                case 1 :
+                    track.append("Sa adaugat un utilizator nou " ).append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 2 :
+                    track.append("Sa afisat lista de utilizatori").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 3 :
+                    track.append("Sa adaugat un local nou").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 4 :
+                    track.append("Sa afisat lista de localuri").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 5 :
+                    track.append("Sa adaugat un meniu nou").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 6 :
+                    track.append("Sa afisat lista de meniuri").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 7 :
+                    track.append("Sa adaugat un voucher nou").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 8 :
+                    track.append("Sa afisat lista de vouchere").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 9 :
+                    track.append("Sa adaugat un sofer nou").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 10 :
+                    track.append("Sa afisat lista de soferi").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 11 :
+                    track.append("Sa adaugat o comanda nou").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 12 :
+                    track.append("Sa afisat lista de comenzi").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 13 :
+                    track.append("Sa adaugat un recenzie noua").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 14 :
+                    track.append("Sa afisat lista de recenzii").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 0 :
+                    track.append("Sa inchis programul").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                case 100 :
+                    track.append("Sa deschis programul").append(LocalDateTime.now().toString()).append("\n");
+                    break;
+                default:track.append("Optiunea aleasa nu a fost corecta");
+            }
+            track.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public static void main(String[] args) {
 
@@ -145,7 +211,8 @@ public class Main {
         citire_recenzii.useDelimiter("[,\\n]+");
 
         Scanner scanner = new Scanner(System.in);
-        int decizie;
+        int decizie=100;
+        track(decizie);
         do {
 
 //            Afisare posibilitati de alegere
@@ -179,7 +246,10 @@ public class Main {
 
 //            Acel "if" de mai sus are rolul de a verifica daca actiunea pe care vrem sa o facem exista.
 
-            if (decizie == 1)
+            if (decizie == 1){
+
+                //Apelarea funtiei track
+                track(decizie);
 
 //                Acest if ne introduce intr-o bucla ce are ca rol adaugarea de noi user pana in clipa in care utilizator nu mai doreste acest lucru
 
@@ -255,8 +325,11 @@ public class Main {
                         procedura = 3;
 
 
-                } while (procedura == 1);
+                } while (procedura == 1);}
             else if (decizie == 2) {
+
+                //Apelarea funtiei track
+                track(decizie);
 
 //                Afisarea tuturor userilor;
 
@@ -276,6 +349,10 @@ public class Main {
                     e.printStackTrace();
                 }
             } else if (decizie == 3) {
+
+                //Apelarea funtiei track
+                track(decizie);
+
                 do {
 
 //                    Preluarea datelor necesare pentru adaugarea unui nou local
@@ -325,6 +402,9 @@ public class Main {
                 } while (procedura == 1);
             } else if (decizie == 4) {
 
+                //Apelarea funtiei track
+                track(decizie);
+
 //                Afisarea tuturor localurilor;
 
 
@@ -343,8 +423,12 @@ public class Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else if (decizie == 5)
-                do {
+            } else if (decizie == 5){
+
+                //Apelarea funtiei track
+                track(decizie);
+
+            do {
 
 //                  Citirea datelor necesare pentru crearea unui nou meniu
 
@@ -413,8 +497,11 @@ public class Main {
                     if (var.toUpperCase().equals("NU"))
                         procedura = 3;
                 }
-                while (procedura == 1);
+                while (procedura == 1);}
             else if (decizie == 6){
+
+                //Apelarea funtiei track
+                track(decizie);
 
 //                Afisarea tuturor meniurilor;
 
@@ -435,6 +522,10 @@ public class Main {
                     e.printStackTrace();
                 }
             } else if (decizie == 7) {
+
+                //Apelarea funtiei track
+                track(decizie);
+
                 do {
                     procedura = 1;
 
@@ -480,6 +571,9 @@ public class Main {
                 } while (procedura == 1);
             } else if (decizie == 8){
 
+                //Apelarea funtiei track
+                track(decizie);
+
 //                Afisarea tuturor voucherelor;
 
                 ArrayList<Voucher> voucher=new ArrayList<>();
@@ -499,6 +593,10 @@ public class Main {
                     e.printStackTrace();
                 }
             }else if (decizie == 9) {
+
+                //Apelarea funtiei track
+                track(decizie);
+
                 do {
                     procedura = 1;
 
@@ -556,6 +654,9 @@ public class Main {
                 } while (procedura == 1);
             } else if (decizie == 10) {
 
+                //Apelarea funtiei track
+                track(decizie);
+
 //                Afisarea tuturor soferilor;
 
                 ArrayList<Soferi> sofer=new ArrayList<>();
@@ -575,6 +676,10 @@ public class Main {
                     e.printStackTrace();
                 }
             } else if (decizie == 11) {
+
+                //Apelarea funtiei track
+                track(decizie);
+
                 do {
                     procedura = 1;
 
@@ -618,6 +723,9 @@ public class Main {
                 } while (procedura == 1);
             } else if (decizie == 12) {
 
+                //Apelarea funtiei track
+                track(decizie);
+
 //                Afisarea tuturor comenzilor;
 
                 ArrayList<Comenzi> comanda=new ArrayList<>();
@@ -637,6 +745,10 @@ public class Main {
                     e.printStackTrace();
                 }
             } else if (decizie == 13) {
+
+                //Apelarea funtiei track
+                track(decizie);
+
                 do {
                     procedura = 1;
 
@@ -683,6 +795,10 @@ public class Main {
                 } while (procedura == 1);
             } else if (decizie == 14) {
 
+                //Apelarea funtiei track
+                track(decizie);
+
+
 //                Afisarea tuturor comenzilor;
 
                 ArrayList<Recenzie> recenzie=new ArrayList<>();
@@ -705,6 +821,9 @@ public class Main {
 
         }
         while (decizie != 0);
+
+        //Apelarea funtiei track
+        track(decizie);
 
     }
 }

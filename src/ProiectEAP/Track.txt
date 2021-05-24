@@ -1,0 +1,9 @@
+Sa deschis programul2021-05-25T00:05:20.991
+Sa afisat lista de utilizatori2021-05-25T00:05:23.647
+Sa afisat lista de localuri2021-05-25T00:05:25.128
+Sa afisat lista de meniuri2021-05-25T00:05:26.565
+Sa afisat lista de vouchere2021-05-25T00:05:27.927
+Sa afisat lista de soferi2021-05-25T00:05:29.515
+Sa afisat lista de comenzi2021-05-25T00:05:31.755
+Sa afisat lista de recenzii2021-05-25T00:05:34.571
+Sa inchis programul2021-05-25T00:05:38.695
