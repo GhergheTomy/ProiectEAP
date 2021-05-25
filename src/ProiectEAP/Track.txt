@@ -7,3 +7,33 @@ Sa afisat lista de soferi2021-05-25T00:05:29.515
 Sa afisat lista de comenzi2021-05-25T00:05:31.755
 Sa afisat lista de recenzii2021-05-25T00:05:34.571
 Sa inchis programul2021-05-25T00:05:38.695
+Sa deschis programul2021-05-25T10:03:56.443
+Sa deschis programul2021-05-25T10:04:30.286
+Sa inchis programul2021-05-25T10:04:37.769
+Sa deschis programul2021-05-25T10:05:30.786
+Sa inchis programul2021-05-25T10:05:35.076
+Sa deschis programul2021-05-25T10:15:38.606
+Sa inchis programul2021-05-25T10:15:45.644
+Sa deschis programul2021-05-25T10:38:26.252
+Sa adaugat un utilizator nou 2021-05-25T10:38:36.844
+Sa inchis programul2021-05-25T10:39:17.700
+Sa deschis programul2021-05-25T10:39:36.234
+Sa adaugat un utilizator nou 2021-05-25T10:39:41.036
+Sa deschis programul2021-05-25T10:42:28.694
+Sa adaugat un utilizator nou 2021-05-25T10:42:34.236
+Sa inchis programul2021-05-25T10:43:21.608
+Sa deschis programul2021-05-25T10:55:04.589
+Sa adaugat un local nou2021-05-25T10:55:07.449
+Sa deschis programul2021-05-25T10:55:40.216
+Sa adaugat un local nou2021-05-25T10:55:44.720
+Sa deschis programul2021-05-25T12:14:49.835
+Sa adaugat un meniu nou2021-05-25T12:15:01.168
+Sa adaugat un voucher nou2021-05-25T12:16:09.297
+Sa adaugat un sofer nou2021-05-25T12:16:56.400
+Sa adaugat o comanda nou2021-05-25T12:17:30.548
+Sa deschis programul2021-05-25T12:18:36.799
+Sa adaugat o comanda nou2021-05-25T12:18:43.509
+Sa adaugat un recenzie noua2021-05-25T12:18:59.744
+Sa deschis programul2021-05-25T12:22:08.253
+Sa adaugat un recenzie noua2021-05-25T12:22:12.972
+Sa inchis programul2021-05-25T12:22:40.049

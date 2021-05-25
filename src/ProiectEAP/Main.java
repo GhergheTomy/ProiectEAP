@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -138,7 +139,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         //Creare scaner
 
@@ -212,7 +213,13 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int decizie=100;
+
+        //Apelarea functiei de track
         track(decizie);
+
+        //Initializarea bazei de date
+        BazeDeDate.initializare();
+
         do {
 
 //            Afisare posibilitati de alegere
@@ -243,7 +250,6 @@ public class Main {
                 decizie = Integer.parseInt(scanner.next());
 
             }
-
 //            Acel "if" de mai sus are rolul de a verifica daca actiunea pe care vrem sa o facem exista.
 
             if (decizie == 1){
@@ -291,24 +297,27 @@ public class Main {
 
                     }
 
-//                        Crearea obiectului User
+                    //Adaugarea obiectului user in baza de date
+                    BazeDeDate.inserare_user(nume,prenume,email,parola,card,nr_card);
 
-                    Servicii.adaugaUseri(nume, prenume, email, parola, card, nr_card);
-
-                    try {
-                        FileWriter salvare_conturi=new FileWriter(conturi,true);
-                        salvare_conturi.append("\n");
-                            Servicii.getUseri().forEach(e-> {
-                                try {
-                                    salvare_conturi.append(e.toString());
-                                } catch (IOException ioException) {
-                                    ioException.printStackTrace();
-                                }
-                            });
-                        salvare_conturi.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+////                        Crearea obiectului User
+//
+//                    Servicii.adaugaUseri(nume, prenume, email, parola, card, nr_card);
+//
+//                    try {
+//                        FileWriter salvare_conturi=new FileWriter(conturi,true);
+//                        salvare_conturi.append("\n");
+//                            Servicii.getUseri().forEach(e-> {
+//                                try {
+//                                    salvare_conturi.append(e.toString());
+//                                } catch (IOException ioException) {
+//                                    ioException.printStackTrace();
+//                                }
+//                            });
+//                        salvare_conturi.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
 //                    Verificarea acordului utilizatorului de a introduce inca un utilizator
 
@@ -368,20 +377,23 @@ public class Main {
                     float rating = Float.parseFloat(scanner.next());
                     Servicii.adaugaLocaluri(nume, locatie, specific, rating);
 
-                    try {
-                        FileWriter salvare_localuri=new FileWriter(localuri,true);
-                        salvare_localuri.append("\n");
-                        Servicii.getLocaluri().forEach(e-> {
-                            try {
-                                salvare_localuri.append(e.toString());
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
-                        });
-                        salvare_localuri.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //Adaugarea localului in baza de date
+                    BazeDeDate.inserare_local(nume,locatie,specific,rating);
+
+//                    try {
+//                        FileWriter salvare_localuri=new FileWriter(localuri,true);
+//                        salvare_localuri.append("\n");
+//                        Servicii.getLocaluri().forEach(e-> {
+//                            try {
+//                                salvare_localuri.append(e.toString());
+//                            } catch (IOException ioException) {
+//                                ioException.printStackTrace();
+//                            }
+//                        });
+//                        salvare_localuri.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
                     System.out.println("Doriti sa mai adugati vreun local ? ");
                     System.out.println("Pentru da tastati ->DA ");
@@ -467,20 +479,23 @@ public class Main {
 
                     Servicii.adaugaMeniu(nume, descriere, disponibilitate, pret, reduceri);
 
-                    try {
-                        FileWriter salvare_meniuri=new FileWriter(meniuri,true);
-                        salvare_meniuri.append("\n");
-                        Servicii.getMeniu().forEach(e-> {
-                            try {
-                                salvare_meniuri.append(e.toString());
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
-                        });
-                        salvare_meniuri.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //Inserare meniu in baza de date
+                    BazeDeDate.inserare_meniu(nume,descriere,disponibilitate,pret,reduceri);
+
+//                    try {
+//                        FileWriter salvare_meniuri=new FileWriter(meniuri,true);
+//                        salvare_meniuri.append("\n");
+//                        Servicii.getMeniu().forEach(e-> {
+//                            try {
+//                                salvare_meniuri.append(e.toString());
+//                            } catch (IOException ioException) {
+//                                ioException.printStackTrace();
+//                            }
+//                        });
+//                        salvare_meniuri.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
 //                    Iesirea din bucla pentru a nu mai introduce noi utilizatori
                     System.out.println("Doriti sa mai adaugati vreun preparat in meniu ? ");
@@ -540,20 +555,23 @@ public class Main {
 
                     Servicii.adaugaVoucher(cod, descriere);
 
-                    try {
-                        FileWriter salvare_vouchere=new FileWriter(vouchere,true);
-                        salvare_vouchere.append("\n");
-                        Servicii.getVoucher().forEach(e-> {
-                            try {
-                                salvare_vouchere.append(e.toString());
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
-                        });
-                        salvare_vouchere.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //Inserare voucher in baza de date
+                    BazeDeDate.inserare_voucher(cod,descriere);
+
+//                    try {
+//                        FileWriter salvare_vouchere=new FileWriter(vouchere,true);
+//                        salvare_vouchere.append("\n");
+//                        Servicii.getVoucher().forEach(e-> {
+//                            try {
+//                                salvare_vouchere.append(e.toString());
+//                            } catch (IOException ioException) {
+//                                ioException.printStackTrace();
+//                            }
+//                        });
+//                        salvare_vouchere.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
 //                Iesirea din bucla in cazul in care nu se mai doreste introducerea de noi voucere
 
@@ -623,20 +641,23 @@ public class Main {
 
                     Servicii.adaugaSoferi(denumire, Pos, vehicul);
 
-                    try {
-                        FileWriter salvare_soferi=new FileWriter(soferi,true);
-                        salvare_soferi.append("\n");
-                        Servicii.getSoferi().forEach(e-> {
-                            try {
-                                salvare_soferi.append(e.toString());
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
-                        });
-                        salvare_soferi.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //Inserarea unui sofer in baza de date
+                    BazeDeDate.inserare_soferi(denumire,Pos,vehicul);
+
+//                    try {
+//                        FileWriter salvare_soferi=new FileWriter(soferi,true);
+//                        salvare_soferi.append("\n");
+//                        Servicii.getSoferi().forEach(e-> {
+//                            try {
+//                                salvare_soferi.append(e.toString());
+//                            } catch (IOException ioException) {
+//                                ioException.printStackTrace();
+//                            }
+//                        });
+//                        salvare_soferi.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
 //                Parasire bucla adaugare soferi
 
@@ -692,20 +713,23 @@ public class Main {
 
                     Servicii.adaugaComenzi(nr_comanda);
 
-                    try {
-                        FileWriter salvare_comenzi=new FileWriter(comenzi,true);
-                        salvare_comenzi.append("\n");
-                        Servicii.getComenzi().forEach(e-> {
-                            try {
-                                salvare_comenzi.append(e.toString());
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
-                        });
-                        salvare_comenzi.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //Inserarea unei comenzi in baza de date
+                    BazeDeDate.inserare_comanda(nr_comanda);
+
+//                    try {
+//                        FileWriter salvare_comenzi=new FileWriter(comenzi,true);
+//                        salvare_comenzi.append("\n");
+//                        Servicii.getComenzi().forEach(e-> {
+//                            try {
+//                                salvare_comenzi.append(e.toString());
+//                            } catch (IOException ioException) {
+//                                ioException.printStackTrace();
+//                            }
+//                        });
+//                        salvare_comenzi.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
 //                Iesirea din bucla creata in cazul in care utilizatorul nu mai doreste sa adauge si alte comenzi
 
@@ -765,20 +789,23 @@ public class Main {
 
                     Servicii.adaugaRecenzie(nr_rat, nota, com);
 
-                    try {
-                        FileWriter salvare_recenzii=new FileWriter(recenzii,true);
-                        salvare_recenzii.append("\n");
-                        Servicii.getRecenzie().forEach(e-> {
-                            try {
-                                salvare_recenzii.append(e.toString());
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
-                        });
-                        salvare_recenzii.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    //Inserarea unei noi recenzii in baza de date
+                    BazeDeDate.inserare_recenzie(nr_rat,nota,com);
+
+//                    try {
+//                        FileWriter salvare_recenzii=new FileWriter(recenzii,true);
+//                        salvare_recenzii.append("\n");
+//                        Servicii.getRecenzie().forEach(e-> {
+//                            try {
+//                                salvare_recenzii.append(e.toString());
+//                            } catch (IOException ioException) {
+//                                ioException.printStackTrace();
+//                            }
+//                        });
+//                        salvare_recenzii.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
 //             Paarasirea buclei in cazul in care utilizatorul nu mai doreste adaugarea altei recenzii
                     System.out.println("Doriti sa mai creati vreo recenzie ? ");
