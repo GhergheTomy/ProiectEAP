@@ -342,21 +342,24 @@ public class Main {
 
 //                Afisarea tuturor userilor;
 
-                ArrayList<Useri> useri=new ArrayList<>();
-                for(Object i:citire(conturi,decizie))
-                    useri.add((Useri) i);
-                try {
-                    FileWriter salvare_conturi=new FileWriter(conturi,true);
-                    salvare_conturi.append("\n");
-                    for(Useri j:useri)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_conturi.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                //Afisarea utilizatorilor din baza de date
+                BazeDeDate.afisare_useri();
+
+//                ArrayList<Useri> useri=new ArrayList<>();
+//                for(Object i:citire(conturi,decizie))
+//                    useri.add((Useri) i);
+//                try {
+//                    FileWriter salvare_conturi=new FileWriter(conturi,true);
+//                    salvare_conturi.append("\n");
+//                    for(Useri j:useri)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_conturi.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             } else if (decizie == 3) {
 
                 //Apelarea funtiei track
@@ -417,24 +420,26 @@ public class Main {
                 //Apelarea funtiei track
                 track(decizie);
 
+                //Afisarea localurilor din baza de date
+                BazeDeDate.afisare_localuri();
+
 //                Afisarea tuturor localurilor;
 
-
-                ArrayList<Localuri> local=new ArrayList<>();
-                for(Object i:citire(localuri,decizie))
-                    local.add((Localuri) i);
-                try {
-                    FileWriter salvare_localuri=new FileWriter(localuri,true);
-                    salvare_localuri.append("\n");
-                    for(Localuri j:local)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_localuri.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+//                ArrayList<Localuri> local=new ArrayList<>();
+//                for(Object i:citire(localuri,decizie))
+//                    local.add((Localuri) i);
+//                try {
+//                    FileWriter salvare_localuri=new FileWriter(localuri,true);
+//                    salvare_localuri.append("\n");
+//                    for(Localuri j:local)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_localuri.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             } else if (decizie == 5){
 
                 //Apelarea funtiei track
@@ -518,24 +523,27 @@ public class Main {
                 //Apelarea funtiei track
                 track(decizie);
 
-//                Afisarea tuturor meniurilor;
+                //Apelare functie afirae meniuri baza de date
+                BazeDeDate.afisare_meniu();
 
-                ArrayList<Meniu> meniu=new ArrayList<>();
-                for(Object i:citire(meniuri,decizie))
-                    meniu.add((Meniu) i);
-                try {
-                    FileWriter salvare_meniuri=new FileWriter(meniuri,true);
-                    salvare_meniuri.append("\n");
-                    System.out.println("Nume Preparat ,Descriere,Disponibilitate,Pret,Reduceri");
-                    for(Meniu j:meniu)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_meniuri.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+////                Afisarea tuturor meniurilor;
+//
+//                ArrayList<Meniu> meniu=new ArrayList<>();
+//                for(Object i:citire(meniuri,decizie))
+//                    meniu.add((Meniu) i);
+//                try {
+//                    FileWriter salvare_meniuri=new FileWriter(meniuri,true);
+//                    salvare_meniuri.append("\n");
+//                    System.out.println("Nume Preparat ,Descriere,Disponibilitate,Pret,Reduceri");
+//                    for(Meniu j:meniu)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_meniuri.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             } else if (decizie == 7) {
 
                 //Apelarea funtiei track
@@ -592,24 +600,27 @@ public class Main {
                 //Apelarea funtiei track
                 track(decizie);
 
-//                Afisarea tuturor voucherelor;
+                //Apelare functie cu rolul afisarii voucherelor
+                BazeDeDate.afisare_vouchere();
 
-                ArrayList<Voucher> voucher=new ArrayList<>();
-                for(Object i:citire(vouchere,decizie))
-                    voucher.add((Voucher) i);
-                try {
-                    FileWriter salvare_vouchere=new FileWriter(vouchere,true);
-                    salvare_vouchere.append("\n");
-                    System.out.println("Cod , Descriere");
-                    for(Voucher j:voucher)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_vouchere.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+////                Afisarea tuturor voucherelor;
+//
+//                ArrayList<Voucher> voucher=new ArrayList<>();
+//                for(Object i:citire(vouchere,decizie))
+//                    voucher.add((Voucher) i);
+//                try {
+//                    FileWriter salvare_vouchere=new FileWriter(vouchere,true);
+//                    salvare_vouchere.append("\n");
+//                    System.out.println("Cod , Descriere");
+//                    for(Voucher j:voucher)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_vouchere.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }else if (decizie == 9) {
 
                 //Apelarea funtiei track
@@ -678,24 +689,27 @@ public class Main {
                 //Apelarea funtiei track
                 track(decizie);
 
-//                Afisarea tuturor soferilor;
+                //Apelarea functiei cu rolul afisarii de soferi
+                BazeDeDate.afisare_soferi();
 
-                ArrayList<Soferi> sofer=new ArrayList<>();
-                for(Object i:citire(soferi,decizie))
-                    sofer.add((Soferi) i);
-                try {
-                    FileWriter salvare_soferi=new FileWriter(soferi,true);
-                    salvare_soferi.append("\n");
-                    System.out.println("Nume, Pos, Vehicul");
-                    for(Soferi j:sofer)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_soferi.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+////                Afisarea tuturor soferilor;
+//
+//                ArrayList<Soferi> sofer=new ArrayList<>();
+//                for(Object i:citire(soferi,decizie))
+//                    sofer.add((Soferi) i);
+//                try {
+//                    FileWriter salvare_soferi=new FileWriter(soferi,true);
+//                    salvare_soferi.append("\n");
+//                    System.out.println("Nume, Pos, Vehicul");
+//                    for(Soferi j:sofer)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_soferi.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             } else if (decizie == 11) {
 
                 //Apelarea funtiei track
@@ -750,24 +764,27 @@ public class Main {
                 //Apelarea funtiei track
                 track(decizie);
 
-//                Afisarea tuturor comenzilor;
+                //Apelare functie cu rolul de a afisare comenzi
+                BazeDeDate.afisare_comenzi();
 
-                ArrayList<Comenzi> comanda=new ArrayList<>();
-                for(Object i:citire(comenzi,decizie))
-                    comanda.add((Comenzi) i);
-                try {
-                    FileWriter salvare_comenzi=new FileWriter(comenzi,true);
-                    salvare_comenzi.append("\n");
-                    System.out.println("Numar comanda");
-                    for(Comenzi j:comanda)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_comenzi.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+////                Afisarea tuturor comenzilor;
+//
+//                ArrayList<Comenzi> comanda=new ArrayList<>();
+//                for(Object i:citire(comenzi,decizie))
+//                    comanda.add((Comenzi) i);
+//                try {
+//                    FileWriter salvare_comenzi=new FileWriter(comenzi,true);
+//                    salvare_comenzi.append("\n");
+//                    System.out.println("Numar comanda");
+//                    for(Comenzi j:comanda)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_comenzi.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             } else if (decizie == 13) {
 
                 //Apelarea funtiei track
@@ -825,27 +842,29 @@ public class Main {
                 //Apelarea funtiei track
                 track(decizie);
 
+                //Apelare functie cu rolul afisarii recenzilor
+                BazeDeDate.afisare_recenzi();
 
-//                Afisarea tuturor comenzilor;
-
-                ArrayList<Recenzie> recenzie=new ArrayList<>();
-                for(Object i:citire(recenzii,decizie))
-                    recenzie.add((Recenzie) i);
-                try {
-                    FileWriter salvare_recenzii=new FileWriter(recenzii,true);
-                    salvare_recenzii.append("\n");
-                    System.out.println("Numar raiting, Nota, Comentariu");
-                    for(Recenzie j:recenzie)
-                    {
-                        System.out.println(j.toString());
-                    }
-                    System.out.println("");
-                    salvare_recenzii.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+////                Afisarea tuturor comenzilor;
+//
+//                ArrayList<Recenzie> recenzie=new ArrayList<>();
+//                for(Object i:citire(recenzii,decizie))
+//                    recenzie.add((Recenzie) i);
+//                try {
+//                    FileWriter salvare_recenzii=new FileWriter(recenzii,true);
+//                    salvare_recenzii.append("\n");
+//                    System.out.println("Numar raiting, Nota, Comentariu");
+//                    for(Recenzie j:recenzie)
+//                    {
+//                        System.out.println(j.toString());
+//                    }
+//                    System.out.println("");
+//                    salvare_recenzii.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
-
+//
         }
         while (decizie != 0);
 

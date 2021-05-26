@@ -37,3 +37,35 @@ Sa adaugat un recenzie noua2021-05-25T12:18:59.744
 Sa deschis programul2021-05-25T12:22:08.253
 Sa adaugat un recenzie noua2021-05-25T12:22:12.972
 Sa inchis programul2021-05-25T12:22:40.049
+Sa deschis programul2021-05-25T12:37:03.618
+Sa adaugat un utilizator nou 2021-05-25T12:37:14.900
+Sa adaugat un local nou2021-05-25T12:38:08.135
+Sa deschis programul2021-05-26T13:44:17.075
+Sa afisat lista de utilizatori2021-05-26T13:44:21.230
+Sa deschis programul2021-05-26T13:45:37.183
+Sa afisat lista de utilizatori2021-05-26T13:45:40.732
+Sa deschis programul2021-05-26T13:45:56.192
+Sa afisat lista de utilizatori2021-05-26T13:45:59.125
+Sa deschis programul2021-05-26T13:47:48.874
+Sa afisat lista de utilizatori2021-05-26T13:47:58.948
+Sa inchis programul2021-05-26T13:48:18.919
+Sa deschis programul2021-05-26T13:54:05.824
+Sa afisat lista de localuri2021-05-26T13:54:09.972
+Sa deschis programul2021-05-26T13:56:24.372
+Sa adaugat un utilizator nou 2021-05-26T13:56:27.620
+Sa deschis programul2021-05-26T13:56:35.721
+Sa afisat lista de localuri2021-05-26T13:56:39.616
+Sa deschis programul2021-05-26T14:03:51.609
+Sa afisat lista de meniuri2021-05-26T14:03:55.768
+Sa deschis programul2021-05-26T14:08:45.452
+Sa afisat lista de vouchere2021-05-26T14:08:51.320
+Sa afisat lista de vouchere2021-05-26T14:09:02.305
+Sa inchis programul2021-05-26T14:09:06.016
+Sa deschis programul2021-05-26T14:14:42.312
+Sa afisat lista de soferi2021-05-26T14:14:46.764
+Sa deschis programul2021-05-26T14:23:53.522
+Sa afisat lista de comenzi2021-05-26T14:23:57.439
+Sa deschis programul2021-05-26T14:28:50.271
+Sa afisat lista de recenzii2021-05-26T14:28:55.305
+Sa adaugat un recenzie noua2021-05-26T14:29:12.144
+Sa afisat lista de recenzii2021-05-26T14:30:13.629

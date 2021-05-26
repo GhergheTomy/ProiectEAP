@@ -7,3 +7,4 @@ Tomy,Tomy,Tomy@yahoo.com,asdasd125,Fara card,Fara card,
 Ionel,Gheorghe,iongheo@yahoo.com,123456,Fara card,Fara card,
 Frank,FranFrank,frank@yahoo.ro,123456,Fara card,Fara card,
 Frank,FrankFrank,frank@yahoo.com,1234566,MasterCard,1256632545217856,
+

@@ -2,10 +2,8 @@ package ProiectEAP;
 
 import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 import java.util.Locale;
 
 public class BazeDeDate {
@@ -117,10 +115,28 @@ public class BazeDeDate {
     else statement.executeUpdate("INSERT INTO `proiecteap`.`useri` (`nume`, `prenume`, `email`, `parola`, `card`, `numar_card`) VALUES ('"+nume+"', '"+prenume+"', '"+email+"', '"+parola+"', '"+card+"', '"+nr_card+"');");
     }
 
+    //Functie afisare useri din baza de date
+    public static void afisare_useri() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from useri");
+        while (Rs.next()) {
+            System.out.println(" User: " + Rs.getString("nume") + " " + " Prenume: " + Rs.getString("prenume") + "  Email: " + Rs.getString("email") + " Parola: " + Rs.getString("parola")+ " Card: "+ Rs.getString("card") + " Numar Card: " + Rs.getString("numar_card"));
+        }
+    }
+
     //Functie inserare Local
     public static void inserare_local(String nume,String locatie,String specific,Float nota) throws SQLException {
         statement.executeUpdate("use proiecteap");
         statement.executeUpdate("INSERT INTO `proiecteap`.`localuri` (`Nume`, `Locatie`, `Specific`, `Media`) VALUES ('"+nume+"', '"+locatie+"', '"+specific+"', '"+nota+"');");
+    }
+
+    //Functie afisare localuri din baza de date
+    public static void afisare_localuri() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from localuri");
+        while (Rs.next()) {
+            System.out.println(" Local: " + Rs.getString("Nume") + " " + " Locatie: " + Rs.getString("Locatie") + "  Specific: " + Rs.getString("Specific") + " Media: " + Rs.getFloat("Media"));
+        }
     }
 
     //Functie inserare Meniu
@@ -134,13 +150,32 @@ public class BazeDeDate {
         statement.executeUpdate("INSERT INTO `proiecteap`.`meniuri` (`denumire_mancare`, `descriere`, `disponibilitate`, `pret`, `reduceri`) VALUES ('"+den_mancare+"', '"+descriere+"', '"+dis+"', '"+pret+"', '"+red+"');");
     }
 
+    //Functie afisare meniurilor din baza de date
+    public static void afisare_meniu() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from meniuri");
+        while (Rs.next()) {
+            System.out.println(" Meniu: " + Rs.getString("denumire_mancare") + " " + " Descriere: " + Rs.getString("descriere") + "  Disponibilitate " + Rs.getBoolean("disponibilitate") + " Pret: " + Rs.getInt("pret")+ " Reduceri: "+ Rs.getBoolean("reduceri"));
+        }
+    }
+
     //Functie inserare voucher
     public static void inserare_voucher(int cod,String descriere) throws SQLException {
         statement.executeUpdate("use proiecteap");
         statement.executeUpdate("INSERT INTO `proiecteap`.`vouchere` (`cod`, `Descriere`) VALUES ('"+cod+"', '"+descriere+"');");
     }
 
-    //Functie inserare voucher
+    //Functie afisare vouchere din baza de date
+    public static void afisare_vouchere() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from vouchere");
+        while (Rs.next()) {
+            System.out.println(" Cod voucher: " + Rs.getInt("cod") + " " + " Descriere: " + Rs.getString("Descriere"));
+        }
+    }
+
+
+    //Functie inserare soferi
     public static void inserare_soferi(String nume,Boolean pos,String vehicul) throws SQLException {
         statement.executeUpdate("use proiecteap");
         int po;
@@ -149,11 +184,31 @@ public class BazeDeDate {
         statement.executeUpdate("INSERT INTO `proiecteap`.`soferi` (`Nume`, `POS`, `vehicul`) VALUES ('"+nume+"', '"+po+"', '"+vehicul+"');");
     }
 
+    //Functie afisare soferi din baza de date
+    public static void afisare_soferi() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from soferi");
+        while (Rs.next()) {
+            System.out.println(" Nume sofer: " + Rs.getString("Nume") + " " + " Detinerea de POS: " + Rs.getBoolean("POS") + "  Vehicul detinut: " + Rs.getString("vehicul"));
+        }
+    }
+
+
     //Functii inserare comanda
     public static  void inserare_comanda(int nr_comanda) throws SQLException {
         statement.executeUpdate("use proiecteap");
         statement.executeUpdate("INSERT INTO `proiecteap`.`comenzi` (`Nr_comanda`) VALUES ('"+nr_comanda+"');");
     }
+
+    //Functie afisarea comenzilor din baza de date
+    public static void afisare_comenzi() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from comenzi");
+        while (Rs.next()) {
+            System.out.println(" Numar comanda: " + Rs.getString("Nr_comanda"));
+        }
+    }
+
 
     //Functii inserare recenzie
     public static  void inserare_recenzie(int nr_rating,int nota,String comentariu) throws SQLException {
@@ -161,12 +216,21 @@ public class BazeDeDate {
         statement.executeUpdate("INSERT INTO `proiecteap`.`recenzii` (`Numar_rating`, `Nota`, `Comentariu`) VALUES ('"+nr_rating+"', '"+nota+"', '"+comentariu+"');");
     }
 
+    //Functie afisarea recenzilor din baza de date
+    public static void afisare_recenzi() throws SQLException {
+        statement.executeUpdate("use proiecteap");
+        ResultSet Rs = statement.executeQuery("SELECT * from recenzii");
+        while (Rs.next()) {
+            System.out.println(" Numarul recenziei: " + Rs.getInt("Numar_rating") + " " + " Nota: " + Rs.getInt("Nota") + "  Comentariu: " + Rs.getString("Comentariu"));
+        }
+    }
+
+
     public static void initializare() throws SQLException {
         BazeDeDate b = new BazeDeDate();
         delete_tables();
         create_tables();
         test();
     }
-
 
 }
